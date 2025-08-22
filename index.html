@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe-Connect</title>
+  <!-- Load Tailwind CSS from CDN for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Set a custom font for better aesthetics -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  
+  <!-- Header Section with Navigation -->
+  <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Safe-Connect</h1>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-6" id="desktop-nav">
+        <a href="#home" class="hover:underline text-lg font-semibold transition duration-300 ease-in-out">Home</a>
+        <a href="#how" class="hover:underline text-lg font-semibold transition duration-300 ease-in-out">How It Works</a>
+        <a href="#features" class="hover:underline text-lg font-semibold transition duration-300 ease-in-out">Features</a>
+        <a href="#about" class="hover:underline text-lg font-semibold transition duration-300 ease-in-out">About</a>
+        <a href="#contact" class="hover:underline text-lg font-semibold transition duration-300 ease-in-out">Contact</a>
+        <div id="auth-links" class="flex items-center space-x-4">
+          <a href="#login" class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold shadow-md hover:bg-gray-100 transition duration-300 ease-in-out">Login</a>
+          <a href="#register" class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold shadow-md hover:bg-gray-100 transition duration-300 ease-in-out">Register</a>
+        </div>
+        <div id="user-info" class="hidden items-center space-x-4">
+          <span class="text-lg font-semibold" id="welcome-message"></span>
+          <button id="logout-button" class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold shadow-md hover:bg-gray-100 transition duration-300 ease-in-out">Logout</button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-nav" class="hidden md:hidden bg-blue-700 text-white p-4 transition-all duration-300 ease-in-out">
+    <nav class="flex flex-col space-y-4 text-center">
+      <a href="#home" class="block hover:bg-blue-600 p-2 rounded transition duration-300">Home</a>
+      <a href="#how" class="block hover:bg-blue-600 p-2 rounded transition duration-300">How It Works</a>
+      <a href="#features" class="block hover:bg-blue-600 p-2 rounded transition duration-300">Features</a>
+      <a href="#about" class="block hover:bg-blue-600 p-2 rounded transition duration-300">About</a>
+      <a href="#contact" class="block hover:bg-blue-600 p-2 rounded transition duration-300">Contact</a>
+      <div id="auth-links-mobile" class="flex flex-col space-y-2 mt-4">
+        <a href="#login" class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold hover:bg-gray-100 transition duration-300">Login</a>
+        <a href="#register" class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold hover:bg-gray-100 transition duration-300">Register</a>
+      </div>
+      <div id="user-info-mobile" class="hidden flex flex-col space-y-2 mt-4">
+        <span class="text-lg font-semibold" id="welcome-message-mobile"></span>
+        <button id="logout-button-mobile" class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold hover:bg-gray-100 transition duration-300">Logout</button>
+      </div>
+    </nav>
+  </div>
+  
+  <!-- Hero Section -->
+  <section id="home" class="py-20 px-4 md:px-8 text-center bg-gradient-to-r from-blue-50 to-blue-200">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800">Welcome to Safe-Connect</h2>
+      <p class="mt-4 text-xl md:text-2xl text-gray-600">Reimagining public communication for students and the elderly – no mobile required!</p>
+      <button class="mt-8 px-8 py-3 rounded-full font-bold shadow-lg text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform hover:scale-105">Learn More</button>
+    </div>
+  </section>
+  
+  <!-- How It Works Section -->
+  <section id="how" class="py-16 px-4 md:px-8">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- QR/NFC ID Card Feature Box -->
+        <div class="flex-1 p-6 bg-white border border-gray-200 rounded-xl shadow-md transform transition duration-300 ease-in-out hover:shadow-xl hover:scale-105">
+          <img src="https://placehold.co/100x100/A1A1AA/ffffff?text=ID" alt="ID Card Icon" class="mx-auto mb-4 rounded-full">
+          <h3 class="text-xl font-semibold text-center mb-2">QR/NFC ID Cards</h3>
+          <p class="text-center text-gray-600">Each user carries a unique card that stores essential contact and ID details, making it easy to use.</p>
+        </div>
+        <!-- Smart Booths Feature Box -->
+        <div class="flex-1 p-6 bg-white border border-gray-200 rounded-xl shadow-md transform transition duration-300 ease-in-out hover:shadow-xl hover:scale-105">
+          <img src="https://placehold.co/100x100/A1A1AA/ffffff?text=Booth" alt="Smart Booth Icon" class="mx-auto mb-4 rounded-full">
+          <h3 class="text-xl font-semibold text-center mb-2">Smart Booths</h3>
+          <p class="text-center text-gray-600">Secure telephone booths at key locations read the card and connect the call instantly to a pre-defined contact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section id="features" class="py-16 px-4 md:px-8 bg-gray-100">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Features</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- No Mobile Needed Feature -->
+        <div class="p-6 bg-white border border-gray-200 rounded-xl shadow-md text-center transform transition duration-300 ease-in-out hover:shadow-xl hover:scale-105">
+          <img src="https://placehold.co/80x80/60A5FA/ffffff?text=No+Phone" alt="No Mobile Icon" class="mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">No Mobile Needed</h3>
+          <p class="text-gray-600">Ideal for children, seniors, or areas with poor mobile access, ensuring everyone stays connected.</p>
+        </div>
+        <!-- Location-Based Access Feature -->
+        <div class="p-6 bg-white border border-gray-200 rounded-xl shadow-md text-center transform transition duration-300 ease-in-out hover:shadow-xl hover:scale-105">
+          <img src="https://placehold.co/80x80/60A5FA/ffffff?text=Map" alt="Location Icon" class="mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">Location-Based Access</h3>
+          <p class="text-gray-600">Booths are strategically placed near schools, markets, and public zones for easy access.</p>
+        </div>
+        <!-- Real-Time Notifications Feature -->
+        <div class="p-6 bg-white border border-gray-200 rounded-xl shadow-md text-center transform transition duration-300 ease-in-out hover:shadow-xl hover:scale-105">
+          <img src="https://placehold.co/80x80/60A5FA/ffffff?text=Alert" alt="Notification Icon" class="mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">Real-Time Notifications</h3>
+          <p class="text-gray-600">Family members get an instant alert with the user's location when a call is initiated.</p>
+        </div>
+        <!-- Secure and Private Feature -->
+        <div class="p-6 bg-white border border-gray-200 rounded-xl shadow-md text-center transform transition duration-300 ease-in-out hover:shadow-xl hover:scale-105">
+          <img src="https://placehold.co/80x80/60A5FA/ffffff?text=Secure" alt="Security Icon" class="mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">Secure and Private</h3>
+          <p class="text-gray-600">User data is encrypted and protected with industry-standard security measures to ensure privacy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Us Section -->
+  <section id="about" class="py-16 px-4 md:px-8">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">About Us</h2>
+      <p class="text-lg text-gray-600">Safe-Connect is founded with a mission to provide secure communication options for individuals without access to smartphones. Our system ensures connectivity, safety, and ease of use for everyone, bridging the digital divide with simple, effective technology.</p>
+    </div>
+  </section>
+  
+  <!-- Contact Us Section -->
+  <section id="contact" class="py-16 px-4 md:px-8 bg-gray-100">
+    <div class="container mx-auto max-w-xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Contact Us</h2>
+      <form class="bg-white p-8 rounded-xl shadow-lg">
+        <input type="text" placeholder="Your Name" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="email" placeholder="Your Email" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <textarea rows="5" placeholder="Your Message" class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Registration Section -->
+  <section id="register" class="hidden py-16 px-4 md:px-8">
+    <div class="container mx-auto max-w-md">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Create an Account</h2>
+      <div id="register-message" class="hidden p-4 mb-4 rounded" role="alert"></div>
+      <form id="register-form" class="bg-white p-8 rounded-xl shadow-lg">
+        <input type="text" id="register-username" placeholder="Username" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="email" id="register-email" placeholder="Email" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="password" id="register-password" placeholder="Password" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out">Register</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Login Section -->
+  <section id="login" class="hidden py-16 px-4 md:px-8">
+    <div class="container mx-auto max-w-md">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Login to Your Account</h2>
+      <div id="login-message" class="hidden p-4 mb-4 rounded" role="alert"></div>
+      <form id="login-form" class="bg-white p-8 rounded-xl shadow-lg">
+        <input type="text" id="login-username" placeholder="Username" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="email" id="login-email" placeholder="Email" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="password" id="login-password" placeholder="Password" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out">Login</button>
+        <p class="mt-4 text-center text-gray-600">
+            <a href="#forgot-password" class="text-blue-600 hover:underline">Forgot Password?</a>
+        </p>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Forgot Password Section -->
+  <section id="forgot-password" class="hidden py-16 px-4 md:px-8">
+    <div class="container mx-auto max-w-md">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Forgot Your Password?</h2>
+      <div id="forgot-message" class="hidden p-4 mb-4 rounded" role="alert"></div>
+      <form id="forgot-form" class="bg-white p-8 rounded-xl shadow-lg">
+        <p class="mb-4 text-center text-gray-600">Enter the email associated with your account and we'll send you a password reset link.</p>
+        <input type="email" id="forgot-email" placeholder="Your Email" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out">Send Reset Link</button>
+        <p class="mt-4 text-center text-gray-600">
+            <a href="#login" class="text-blue-600 hover:underline">Return to Login</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 text-center">
+    <div class="container mx-auto">
+      <p>&copy; 2025 Safe-Connect. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for handling page navigation and user authentication
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get references to all key elements
+      const sections = document.querySelectorAll('section');
+      
+      const desktopNav = document.getElementById('desktop-nav');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      
+      const authLinks = document.getElementById('auth-links');
+      const userInfo = document.getElementById('user-info');
+      const welcomeMessage = document.getElementById('welcome-message');
+      const logoutButton = document.getElementById('logout-button');
+      
+      const authLinksMobile = document.getElementById('auth-links-mobile');
+      const userInfoMobile = document.getElementById('user-info-mobile');
+      const welcomeMessageMobile = document.getElementById('welcome-message-mobile');
+      const logoutButtonMobile = document.getElementById('logout-button-mobile');
+      
+      const registerForm = document.getElementById('register-form');
+      const registerUsernameInput = document.getElementById('register-username');
+      const registerEmailInput = document.getElementById('register-email');
+      const registerPasswordInput = document.getElementById('register-password');
+      const registerMessage = document.getElementById('register-message');
+      
+      const loginForm = document.getElementById('login-form');
+      const loginUsernameInput = document.getElementById('login-username');
+      const loginEmailInput = document.getElementById('login-email');
+      const loginPasswordInput = document.getElementById('login-password');
+      const loginMessage = document.getElementById('login-message');
+
+      const forgotForm = document.getElementById('forgot-form');
+      const forgotEmailInput = document.getElementById('forgot-email');
+      const forgotMessage = document.getElementById('forgot-message');
+
+      // Function to show a specific section and hide all others
+      const showSection = (id) => {
+        sections.forEach(section => {
+          section.classList.add('hidden');
+        });
+        const targetSection = document.getElementById(id);
+        if (targetSection) {
+          targetSection.classList.remove('hidden');
+          // Hide auth messages on page change
+          registerMessage.classList.add('hidden');
+          loginMessage.classList.add('hidden');
+          forgotMessage.classList.add('hidden');
+        }
+        // Hide mobile menu after navigation
+        mobileNav.classList.add('hidden');
+      };
+
+      // Function to update the header based on login status
+      const updateAuthUI = () => {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+          // Desktop UI
+          authLinks.classList.add('hidden');
+          userInfo.classList.remove('hidden');
+          welcomeMessage.textContent = `Welcome, ${loggedInUser}!`;
+          // Mobile UI
+          authLinksMobile.classList.add('hidden');
+          userInfoMobile.classList.remove('hidden');
+          welcomeMessageMobile.textContent = `Welcome, ${loggedInUser}!`;
+        } else {
+          // Desktop UI
+          authLinks.classList.remove('hidden');
+          userInfo.classList.add('hidden');
+          // Mobile UI
+          authLinksMobile.classList.remove('hidden');
+          userInfoMobile.classList.add('hidden');
+        }
+      };
+
+      // Handle URL hash changes for navigation
+      const handleHashChange = () => {
+        const hash = window.location.hash.substring(1);
+        const targetId = hash || 'home';
+        showSection(targetId);
+      };
+
+      // Handle mobile menu toggle
+      mobileMenuButton.addEventListener('click', () => {
+        mobileNav.classList.toggle('hidden');
+      });
+
+      // Handle registration form submission
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = registerUsernameInput.value.trim();
+        const email = registerEmailInput.value.trim();
+        const password = registerPasswordInput.value.trim();
+        
+        // Store user in local storage (for demonstration purposes only)
+        let users = JSON.parse(localStorage.getItem('users')) || {};
+        if (users[username]) {
+          registerMessage.textContent = 'Username already exists.';
+          registerMessage.classList.remove('hidden', 'bg-green-100', 'border-green-500', 'text-green-700');
+          registerMessage.classList.add('bg-red-100', 'border-red-500', 'text-red-700', 'border-l-4');
+        } else {
+          users[username] = { email, password };
+          localStorage.setItem('users', JSON.stringify(users));
+          registerMessage.textContent = 'Registration successful! You can now log in.';
+          registerMessage.classList.remove('hidden', 'bg-red-100', 'border-red-500', 'text-red-700');
+          registerMessage.classList.add('bg-green-100', 'border-green-500', 'text-green-700', 'border-l-4');
+          // Clear form inputs
+          registerUsernameInput.value = '';
+          registerEmailInput.value = '';
+          registerPasswordInput.value = '';
+          // Optionally, redirect to login page
+          setTimeout(() => {
+            window.location.hash = '#login';
+          }, 2000);
+        }
+      });
+
+      // Handle login form submission
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = loginUsernameInput.value.trim();
+        const email = loginEmailInput.value.trim();
+        const password = loginPasswordInput.value.trim();
+        
+        let users = JSON.parse(localStorage.getItem('users')) || {};
+        if (users[username] && users[username].email === email && users[username].password === password) {
+          localStorage.setItem('loggedInUser', username);
+          updateAuthUI();
+          window.location.hash = '#home'; // Redirect to home on successful login
+          loginMessage.classList.add('hidden');
+        } else {
+          loginMessage.textContent = 'Invalid username, email, or password.';
+          loginMessage.classList.remove('hidden', 'bg-green-100', 'border-green-500', 'text-green-700');
+          loginMessage.classList.add('bg-red-100', 'border-red-500', 'text-red-700', 'border-l-4');
+        }
+      });
+      
+      // Handle forgot password form submission
+      forgotForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = forgotEmailInput.value.trim();
+        let users = JSON.parse(localStorage.getItem('users')) || {};
+        const userFound = Object.values(users).find(user => user.email === email);
+
+        if (userFound) {
+          forgotMessage.textContent = `A password reset link has been sent to ${email}.`;
+          forgotMessage.classList.remove('hidden', 'bg-red-100', 'border-red-500', 'text-red-700');
+          forgotMessage.classList.add('bg-green-100', 'border-green-500', 'text-green-700', 'border-l-4');
+        } else {
+          forgotMessage.textContent = 'No account found with that email address.';
+          forgotMessage.classList.remove('hidden', 'bg-green-100', 'border-green-500', 'text-green-700');
+          forgotMessage.classList.add('bg-red-100', 'border-red-500', 'text-red-700', 'border-l-4');
+        }
+      });
+
+      // Handle logout button click
+      const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+        updateAuthUI();
+        window.location.hash = '#home'; // Redirect to home on logout
+      };
+      logoutButton.addEventListener('click', handleLogout);
+      logoutButtonMobile.addEventListener('click', handleLogout);
+
+      // Initialize on page load
+      updateAuthUI();
+      window.addEventListener('hashchange', handleHashChange);
+      handleHashChange();
+    });
+  </script>
+</body>
+</html>
